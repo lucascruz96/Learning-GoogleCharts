@@ -5,7 +5,11 @@
 
 #regions_div svg path[fill^='none'] {
     stroke-width:0px;
-  }
+}
+
+#div_map{
+    display: none;
+}
 
 .text_center{
     text-align: center;
@@ -21,7 +25,6 @@
 
 .center{
     position: relative;
-    top: 60%;
     left: 34%;
     width: 28%;
     height: 100%;
