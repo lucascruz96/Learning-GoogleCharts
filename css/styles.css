@@ -1,0 +1,29 @@
+#regions_div{
+    width: 850px; 
+    height: 350px;
+}
+
+#regions_div svg path[fill^='none'] {
+    stroke-width:0px;
+  }
+
+.text_center{
+    text-align: center;
+}
+
+.form-control{
+    max-width: 100px;
+}
+
+.control-label{
+    font-size: 8pt;
+}
+
+.center{
+    position: relative;
+    top: 60%;
+    left: 34%;
+    width: 28%;
+    height: 100%;
+    text-align: center;
+}
