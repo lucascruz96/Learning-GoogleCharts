@@ -62,5 +62,5 @@ function hideMainDiv(){
 }
 
 function homePage(){
-	window.location.replace("GeoCharts.html");
+	window.location.replace("GeoChart.html");
 }
