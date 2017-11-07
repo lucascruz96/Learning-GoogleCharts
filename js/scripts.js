@@ -1,4 +1,4 @@
-function loadMap(){
+function loadMap() {
 	google.charts.load('current', {
 		'packages': ['geomap'],
 		'mapsApiKey': '[API-KEY]'
@@ -8,7 +8,7 @@ function loadMap(){
 }
 
 function drawRegionsMap() {
-	console.log(typeof(parseInt(document.getElementById('input-ac').value)));
+	console.log(typeof (parseInt(document.getElementById('input-ac').value)));
 	var data = google.visualization.arrayToDataTable([
 		['Estado', 'Publicações'],
 		['Acre', parseInt(document.getElementById('input-ac').value)],
@@ -46,21 +46,77 @@ function drawRegionsMap() {
 		datalessRegionColor: 'transparent'
 	};
 
-	var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+	var chart = new google.visualization.GeoChart(document.getElementById("regions_div"));
 	chart.draw(data, options);
 
-	showMap();
+	showChart();
 	hideMainDiv();
 }
 
-function showMap(){
-	document.getElementById("div_map").style.display = "block";
+function showChart() {
+	document.getElementById("div_chart").style.display = "block";
 }
 
-function hideMainDiv(){
+function hideMainDiv() {
 	document.getElementById("div_main").style.display = "none";
 }
 
-function homePage(){
+function homePage() {
 	window.location.replace("GeoChart.html");
+}
+
+function newTask() {
+	var index = (document.getElementById("div_tasks").childElementCount / 2) + 1;
+
+	var task = "<label for=\"input-task" + index + "\">";
+	task += "Tarefa " + index;
+	task += "<input id=\"input-task" + index + "\" class=\"form-control\" type=\"text\" required>";
+	task += "</label>";
+	task += "<label for=\"input-time" + index + "\">";
+	task += "Horas";
+	task += "<input id=\"input-time" + index + "\" class=\"form-control input-number input-number2\" type=\"number\" min=\"1\" max=\"24\" required>";
+	task += "</label>";
+
+	document.getElementById("div_tasks").innerHTML += task;
+}
+
+function loadPie() {
+	google.charts.load('current', { 'packages': ['corechart'] });
+	google.charts.setOnLoadCallback(drawPie);
+}
+
+function drawPie() {
+	var tasks = catchTasks();
+
+	var data = google.visualization.arrayToDataTable(tasks);
+
+	var options = {
+		height: 500,
+		width: 900,
+		is3D: document.getElementById("input-3d").checked
+	};
+
+	var chart = new google.visualization.PieChart(document.getElementById('pie_div'));
+
+	chart.draw(data, options);
+	
+	showChart();
+	hideMainDiv();
+}
+
+function catchTasks(){
+	var count = (document.getElementById("div_tasks").childElementCount / 2);
+	var tasks = [];
+	var name, time;
+
+	tasks.push(["Tarefa", "Horas"]);
+
+	for(var i = 1; i <= count; i++){
+		name = document.getElementById("input-task" + i).value;
+		time = parseInt(document.getElementById("input-time" + i).value);
+
+		tasks.push([name, time]);
+	}
+
+	return tasks;
 }

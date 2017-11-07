@@ -1,3 +1,7 @@
+h4{
+    margin-top: 100px;
+}
+
 #regions_div{
     width: 900px; 
     height: 350px;
@@ -7,16 +11,20 @@
     stroke-width:0px;
 }
 
-#div_map{
+#div_chart{
     display: none;
 }
 
-.text_center{
+.text-center{
     text-align: center;
 }
 
-.form-control{
+.input-number{
     max-width: 100px;
+}
+
+.input-number2{
+    margin-left: 4px;
 }
 
 .control-label{
@@ -33,4 +41,18 @@
 
 .margin-top{
     margin-top: 15px;
+}
+
+.white{
+    color: white;
+}
+
+.background-gray {
+	background:#eeeeee;
+}
+
+.box{
+    padding: 15px 15px 15px 15px;
+    margin: 0 auto;
+    border: 1px solid rgba(0,0,0,0.1);
 }
