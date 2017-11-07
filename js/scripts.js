@@ -60,3 +60,7 @@ function showMap(){
 function hideMainDiv(){
 	document.getElementById("div_main").style.display = "none";
 }
+
+function homePage(){
+	window.location.replace("GeoCharts.html");
+}
