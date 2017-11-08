@@ -62,7 +62,7 @@ function hideMainDiv() {
 }
 
 function homePage() {
-	window.location.replace("GeoChart.html");
+	window.location.replace("Index.html");
 }
 
 function newTask() {
@@ -120,3 +120,56 @@ function catchTasks(){
 
 	return tasks;
 }
+
+function loadBar(){
+	google.charts.load('current', {packages: ['corechart', 'bar']});
+	google.charts.setOnLoadCallback(drawBar);	
+}
+
+function drawBar() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Mês/Ano');
+      data.addColumn('number', 'Enviados');
+      data.addColumn({type: 'string', role: 'annotation'});
+      data.addColumn('number', 'Recebidos');
+      data.addColumn({type: 'string', role: 'annotation'});
+
+      data.addRows([
+        ['Jan/17',   10, '10',  7, '7'],
+        ['Fev/17',   15, '15',  12, '12'],
+        ['Mar/17',   20, '20',  13, '13'],
+        ['Abr/17',   18, '18',  7, '7'],
+        ['Mai/17',   23, '23',  15, '15'],
+        ['Jun/17',   10, '10',  7, '7'],
+        ['Jul/17',   10, '10',  7, '7'],
+        ['Ago/17',   10, '10',  7, '7'],
+        ['Set/17',   10, '10',  7, '7'],
+		['Out/17',   10, '10',  7, '7'],
+		['Nov/17',   10, '10',  7, '7'],
+		['Dez/17',   10, '10',  7, '7']
+      ]);
+
+      var options = {
+		title: 'Emails enviados e recebidos por mês',
+        annotations: {
+          alwaysOutside: true,
+          textStyle: {
+            fontSize: 14,
+            color: '#000',
+            auraColor: 'none'
+          }
+        },
+        hAxis: {
+          title: 'Mês/Ano'
+        },
+        vAxis: {
+          title: 'Quantidade Emais'
+        }
+      };
+
+      var chart = new google.visualization.ColumnChart(document.getElementById('bar_div'));
+	  chart.draw(data, options);
+	  
+	  showChart();
+	  hideMainDiv();
+    }
